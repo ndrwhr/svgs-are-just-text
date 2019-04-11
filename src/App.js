@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 
 import Opening from './slides/opening';
@@ -14,18 +14,45 @@ import CSS04 from './slides/css04';
 import Closing from './slides/closing';
 
 /*
-.scrollIntoView({
-  behavior: 'smooth',
-  block: 'start',
-})
+
 */
 
-class App extends Component {
+export default class App extends React.Component {
+
+  handleKeyPress = ({key}) => {
+    if (key === 'ArrowLeft') {
+      this.scrollTo(-1);
+    } else if (key === 'ArrowRight') {
+      this.scrollTo(1);
+    }
+  }
+
+  scrollTo(direction) {
+    const slides = Array.from(document.querySelectorAll('.App > div'));
+    const tops = slides.map(slide => slide.getBoundingClientRect().top);
+
+    const currentScroll = document.body.scrollTop + (window.innerHeight / 2);
+
+    const currentIndex = tops.findIndex((elTop) => elTop >= currentScroll) - 1;
+
+    const nextIndex = Math.min(Math.max(currentIndex + direction, 0), slides.length - 1);
+
+
+
+    slides[nextIndex].scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
+
+  componentDidMount() {
+    document.body.addEventListener('keyup', this.handleKeyPress);
+  }
+
   render() {
     return (
       <div className="App">
         <Opening/>
-
         <BasicShapes/>
         <Lines/>
         <Tiger/>
@@ -41,5 +68,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;

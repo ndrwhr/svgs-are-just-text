@@ -353,7 +353,7 @@ var BallPit = {
 
       // Add a bunch of balls.
       this.balls = [];
-      for (var i = 0, ball; i < this.startNumBalls_; i++) this.addBall();
+      for (var i = 0; i < this.startNumBalls_; i++) this.addBall();
 
       // Bind a copy of update so that we don't have to constantly do that at
       // run time. Note that update constantly calls requestAnimationFrame to
@@ -425,7 +425,7 @@ var BallPit = {
 
 export default class Physics extends React.Component {
   constructor(...args) {
-    super(args);
+    super(...args);
 
     this.svg = React.createRef();
   }
@@ -438,7 +438,7 @@ export default class Physics extends React.Component {
       <Slide>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"
         preserveAspectRatio="xMidYMid slice" height="500px" width="500px" ref={this.svg}>
-            <g class="ball-pit"></g>
+            <g className="ball-pit"></g>
         </svg>
       </Slide>
     )
