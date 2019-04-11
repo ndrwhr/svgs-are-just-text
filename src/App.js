@@ -1,25 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import Opening from './slides/opening';
+import BasicShapes from './slides/basic_shapes';
+import Lines from './slides/lines';
+import Tiger from './slides/tiger';
+import JS from './slides/javascript';
+import Physics from './slides/physics';
+import CSS01 from './slides/css01';
+import CSS02 from './slides/css02';
+import CSS03 from './slides/css03';
+import CSS04 from './slides/css04';
+import Closing from './slides/closing';
+
+/*
+.scrollIntoView({
+  behavior: 'smooth',
+  block: 'start',
+})
+*/
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Opening/>
+
+        <BasicShapes/>
+        <Lines/>
+        <Tiger/>
+        <JS/>
+        <Physics/>
+        <CSS01/>
+        <CSS02/>
+        <CSS03/>
+        <CSS04/>
+        <Opening/>
+        <Closing/>
       </div>
     );
   }
